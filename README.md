@@ -17,6 +17,20 @@ $ pkg install php
 $ termux-setup-storage
 $ git clone https://github.com/iewilmaestro/Bypass-With-Apikey
 ```
+### Note
+```php
+/* Please replace with your data */
+/* @example site https://recaptcha.example.com */
+$siteurl = "sITE_URL";
+
+/*
+* @example Api RecaptchaV2 : 6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5 */
+* @example Api HCaptcha : 4dc72c58-72a1-40b9-b244-83b5187a64aa 
+*/
+$sitekey = "SITE_KEY";
+
+$apikey = "YOUR_APIKEY";
+```
 ![Donation: iewil](https://img.shields.io/badge/💰-Donation-blue?style=flat-square)<br>
 ![BTC: iewil](https://img.shields.io/badge/BTC-18jswG2t9EZrnHju5dyiYw1yGbkcrTSgJg-blue?style=flat-square&logo=bitcoin)
 ![Paypal: iewil](https://img.shields.io/badge/Paypal-Purna.iera@gmail.com-blue?style=flat-square&logo=paypal)
