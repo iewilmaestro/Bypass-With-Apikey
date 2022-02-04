@@ -110,7 +110,7 @@ if($menu==1){
 $siteurl = "sITE_URL";
 
 /*
-* @example Api RecaptchaV2 : 6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5 */
+* @example Api RecaptchaV2 : 6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5
 * @example Api HCaptcha : 4dc72c58-72a1-40b9-b244-83b5187a64aa 
 */
 $sitekey = "SITE_KEY";
