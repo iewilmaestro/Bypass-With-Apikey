@@ -102,11 +102,18 @@ if($menu==1){
 	goto TypeCaptcha;
 }
 
-$siteurl = "https://recaptcha.example.com";
-/* @example Api RecaptchaV2 */
-$sitekey = "6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5";
-/* @example Api HCaptcha */
-$sitekey = "4dc72c58-72a1-40b9-b244-83b5187a64aa";
+/*
+* PLEASE REPLACE WITH YOUR DATA
+*
+* @example site https://recaptcha.example.com 
+*/
+$siteurl = "sITE_URL";
+
+/*
+* @example Api RecaptchaV2 : 6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5 */
+* @example Api HCaptcha : 4dc72c58-72a1-40b9-b244-83b5187a64aa 
+*/
+$sitekey = "SITE_KEY";
 
 $apikey = "YOUR_APIKEY";
 
