@@ -26,7 +26,7 @@ $ git clone https://github.com/iewilmaestro/Bypass-With-Apikey
 *
 * @example site https://recaptcha.example.com 
 */
-$siteurl = "sITE_URL";
+$siteurl = "SITE_URL";
 
 /*
 * @example Api RecaptchaV2 : 6Ld06asZAAAAAPKfIQIFkOct7aLdb2cDeEI1gFJ5
