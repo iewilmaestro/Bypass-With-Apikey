@@ -7,6 +7,37 @@
 * @Support: Team-Function-Family
 *
 */
+function Run($url, $httpheader = 0, $post = 0, $proxy = 0){ // url, postdata, http headers, proxy, uagent
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+	curl_setopt($ch, CURLOPT_COOKIE,TRUE);
+	if($post){
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	}
+	if($httpheader){
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+	}
+	if($proxy){
+		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+		curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		//curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+	}
+	curl_setopt($ch, CURLOPT_HEADER, true);
+	$response = curl_exec($ch);
+	$httpcode = curl_getinfo($ch);
+	if(!$httpcode) return "Curl Error : ".curl_error($ch); else{
+		$header = substr($response, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
+		$body = substr($response, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
+		curl_close($ch);
+		return array($header, $body)[1];
+	}
+}
 function arrayInsert($array, $position, $insertArray){
     $ret = [];
     if($position == count($array)) {
@@ -29,18 +60,19 @@ function Bypass($typeApi, $typeCaptcha, $siteurl, $sitekey, $apikey){
 	$type = $base[$typeCaptcha]["data"];
 	$data=json_encode(array("clientKey"=>$apikey,"task"=>arrayInsert($type,1,["websiteURL"=>$siteurl,"websiteKey"=>$sitekey])));
 	
-	$Create=json_decode(Run($host.'/createTask',$ua,$data));
-	if($Create->errorId == '1'){
-		return 0;
+	$Create=json_decode(Run($host.'/createTask',$ua,$data),1);
+	if($Create["errorId"] == 1){
+		echo $Create["errorCode"];
+		exit;
 	}else{
-		$Task=$Create->taskId;
+		$Task=$Create["taskId"];
 		while(true){
 			$data=json_encode(array("clientKey"=>$apikey,"taskId"=>$Task));
-			$Result=json_decode(Run($host.'/getTaskResult',$ua,$data));
-			if($Result->status=='processing'){
+			$Result=json_decode(Run($host.'/getTaskResult',$ua,$data),1);
+			if($Result["status"] == 'processing'){
 				sleep(5);continue;
 			}
-			return $Result->solution->gRecaptchaResponse;
+			return $Result["solution"]["gRecaptchaResponse"];
 		}
 	}
 }
@@ -56,8 +88,6 @@ if($menu==1){
 	echo "Bad Number\n";
 	goto TypeApi;
 }
-
-echo str_repeat('~',56)."\n";
 
 TypeCaptcha:
 echo "1 - RecaptchaV2\n";
