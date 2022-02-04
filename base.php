@@ -28,7 +28,6 @@ function Bypass($typeApi, $typeCaptcha, $siteurl, $sitekey, $apikey){
 	$ua = $base["typeApi"][$typeApi]["header"];
 	$type = $base[$typeCaptcha]["data"];
 	$data=json_encode(array("clientKey"=>$apikey,"task"=>arrayInsert($type,1,["websiteURL"=>$siteurl,"websiteKey"=>$sitekey])));
-	print_r($data);die();
 	
 	$Create=json_decode(Run($host.'/createTask',$ua,$data));
 	if($Create->errorId == '1'){
