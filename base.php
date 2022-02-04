@@ -58,6 +58,8 @@ if($menu==1){
 	goto TypeApi;
 }
 
+echo str_repeat('~',56)."\n";
+
 TypeCaptcha:
 echo "1 - RecaptchaV2\n";
 echo "2 - Hcaptcha\n";
