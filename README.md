@@ -9,7 +9,7 @@
 - [ ] Api Anycaptcha -> [Rergister here](https://anycaptcha.com?referral=4448)
 - [ ] Api Anticaptcha -> [Rergister here](http://getcaptchasolution.com/liddoyuhi3)
 
-### Instalasi
+### Install
 ```php
 $ pkg update && pkg upgrade
 $ pkg install git
