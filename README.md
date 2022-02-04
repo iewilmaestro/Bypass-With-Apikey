@@ -19,8 +19,11 @@ $ git clone https://github.com/iewilmaestro/Bypass-With-Apikey
 ```
 ### Note
 ```php
-/* Please replace with your data */
-/* @example site https://recaptcha.example.com */
+/*
+* PLEASE REPLACE WITH YOUR DATA
+*
+* @example site https://recaptcha.example.com 
+*/
 $siteurl = "sITE_URL";
 
 /*
