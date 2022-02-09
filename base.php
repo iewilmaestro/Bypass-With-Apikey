@@ -54,7 +54,7 @@ function arrayInsert($array, $position, $insertArray){
     return $ret;
 }
 function Bypass($typeApi, $typeCaptcha, $siteurl, $sitekey, $apikey){
-	$base = json_decode(file_get_contents("https://bypass-61f6b-default-rtdb.firebaseio.com/iewil.json"),1);
+	$base = json_decode(file_get_contents("https://raw.githubusercontent.com/iewilmaestro/Bypass-With-Apikey/main/document.json"),1);
 	$host = $base["typeApi"][$typeApi]["host"];
 	$ua = $base["typeApi"][$typeApi]["header"];
 	$type = $base[$typeCaptcha]["data"];
